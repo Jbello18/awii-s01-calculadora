@@ -3,53 +3,75 @@ package main
 import "fmt"
 
 func main() {
-	// Encabezado
-	fmt.Println("==== CALCULADORA CIENTÍFICA v1.0 ====")
+	var historial string
+	var contador int
 
-	var n1 float64
-	var n2 float64
-	var operacion string
+	for {
+		fmt.Println("==== CALCULADORA CIENTÍFICA v1.0 ====")
 
-	// 1. Pedir los datos al usuario
-	fmt.Print("Ingresa el primer número: ")
-	fmt.Scan(&n1)
-	fmt.Print("Ingresa el segundo número: ")
-	fmt.Scan(&n2)
+		var n1, n2 float64
+		var operacion string
 
-	fmt.Print("Ingresa la operación (+, -, *, /, ^, !): ")
-	fmt.Scan(&operacion)
+		fmt.Print("Ingrese el primer número: ")
+		fmt.Scanln(&n1)
+		fmt.Print("Ingrese el segundo número: ")
+		fmt.Scanln(&n2)
 
-	// 3.
-	switch operacion {
-	case "+":
-		fmt.Printf("Resultado: %.2f + %.2f = %.2f\n", n1, n2, n1+n2)
-	case "-":
-		fmt.Printf("Resultado: %.2f - %.2f = %.2f\n", n1, n2, n1-n2)
-	case "*":
-		fmt.Printf("Resultado: %.2f * %.2f = %.2f\n", n1, n2, n1*n2)
-	case "/":
-		if n2 == 0 {
-			fmt.Println("Error: no se puede dividir entre cero")
-		} else {
-			fmt.Printf("Resultado: %.2f / %.2f = %.2f\n", n1, n2, n1/n2)
-		}
-	case "^":
-		resultadoPot := 1.0
-		for i := 0; i < int(n2); i++ {
-			resultadoPot *= n1
-		}
-		fmt.Printf("Resultado: %.2f ^ %.0f = %.2f\n", n1, n2, resultadoPot)
-	case "!":
-		if n1 < 0 {
-			fmt.Println("Error: No existe factorial de números negativos.")
-		} else {
-			resultadoFact := 1.0
-			for i := 1; i <= int(n1); i++ {
-				resultadoFact *= float64(i)
+		fmt.Print("Ingrese la operación (+, -, *, /, ^, !): ")
+		fmt.Scanln(&operacion)
+
+		var resultadoActual string
+
+		switch operacion {
+		case "+":
+			resultadoActual = fmt.Sprintf("%.2f + %.2f = %.2f", n1, n2, n1+n2)
+		case "-":
+			resultadoActual = fmt.Sprintf("%.2f - %.2f = %.2f", n1, n2, n1-n2)
+		case "*":
+			resultadoActual = fmt.Sprintf("%.2f * %.2f = %.2f", n1, n2, n1*n2)
+		case "/":
+			if n2 == 0 {
+				fmt.Println("Error: no se puede dividir entre cero")
+				continue
 			}
-			fmt.Printf("Resultado: %.0f! = %.2f\n", n1, resultadoFact)
+			resultadoActual = fmt.Sprintf("%.2f / %.2f = %.2f", n1, n2, n1/n2)
+		case "^":
+			resPot := 1.0
+			for i := 0; i < int(n2); i++ {
+				resPot *= n1
+			}
+			resultadoActual = fmt.Sprintf("%.2f ^ %.0f = %.2f", n1, n2, resPot)
+		case "!":
+			if n1 < 0 {
+				fmt.Println("Error: No existe factorial de números negativos.")
+				continue
+			}
+			resFact := 1.0
+			for i := 1; i <= int(n1); i++ {
+				resFact *= float64(i)
+			}
+			resultadoActual = fmt.Sprintf("%.0f! = %.2f", n1, resFact)
+		default:
+			fmt.Println("Error: operación no reconocida")
+			continue
 		}
-	default:
-		fmt.Println("Error: operación no reconocida")
+
+		fmt.Println("Resultado:", resultadoActual)
+
+		// Guardar el historial
+		contador++
+		historial += fmt.Sprintf("%d) %s\n", contador, resultadoActual)
+
+		var respuesta string
+		fmt.Print("¿Desea realizar otra operación? (s/n): ")
+		fmt.Scanln(&respuesta)
+
+		if respuesta == "n" {
+			fmt.Println("\n==== HISTORIAL DE OPERACIONES ====")
+			fmt.Print(historial)
+			fmt.Printf("Total de operaciones realizadas: %d\n", contador) // [cite: 158]
+			fmt.Println("¡Hasta luego!")
+			break // [cite: 161]
+		}
 	}
 }
