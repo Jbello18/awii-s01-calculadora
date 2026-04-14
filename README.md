@@ -1,3 +1,5 @@
+# Apellidos y Nombres:
+Bello Alava John Erick - 6to "B" AW-II
 # Calculadora Científica CLI en Go
 Este repositorio contiene el desarrollo del **Taller Práctico de la Semana 1** para la asignatura de **Aplicaciones Web II**. 
 Es una aplicación de interfaz de línea de comandos (CLI) que aplica los fundamentos del lenguaje Go.
