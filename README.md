@@ -7,7 +7,7 @@ Es una aplicación de interfaz de línea de comandos (CLI) que aplica los fundam
 ## Funcionalidades Implementadas
 El taller se desarrolló de forma incremental cumpliendo los hitos de los Checkpoints 1, 2 y 3:
 
-* Operaciones Básicas: Suma, resta y multiplicación con formato de precisión[cite: 100, 108].
+* Operaciones Básicas: Suma, resta y multiplicación con formato de precisión.
 * División con Precisión: Manejo de decimales mediante el uso de "float64" y formato "%.2f".
 * Lógica Defensiva: Validación para evitar la división por cero y manejo de operaciones no reconocidas.
 * Operaciones Científicas: Potencia "^" y Factorial "!" implementadas manualmente con bucles "for", sin utilizar el paquete "math".
