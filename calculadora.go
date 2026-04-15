@@ -69,9 +69,9 @@ func main() {
 		if respuesta == "n" {
 			fmt.Println("\n==== HISTORIAL DE OPERACIONES ====")
 			fmt.Print(historial)
-			fmt.Printf("Total de operaciones realizadas: %d\n", contador) // [cite: 158]
+			fmt.Printf("Total de operaciones realizadas: %d\n", contador) 
 			fmt.Println("¡Hasta luego!")
-			break // [cite: 161]
+			break //
 		}
 	}
 }
